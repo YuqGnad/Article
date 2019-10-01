@@ -5,23 +5,20 @@ use Magento\Framework\Setup\InstallSchemaInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\SchemaSetupInterface;
 use Magento\Framework\DB\Ddl\Table;
-use phpDocumentor\Reflection\Type;
 
 class InstallSchema implements InstallSchemaInterface
 {
 
     /**
-     * Installs DB schema for a module
-     *
      * @param SchemaSetupInterface $setup
      * @param ModuleContextInterface $context
-     * @return void
+     * @throws \Zend_Db_Exception
      */
     public function install(SchemaSetupInterface $setup, ModuleContextInterface $context)
     {
         // TODO: Implement install() method.
         $setup->startSetup();
-        $tableName = $setup->getTable('sm_artitcle');
+        $tableName = $setup->getTable('sm_article');
         if($setup->getConnection()->isTableExists($tableName) != true) {
             $table = $setup->getConnection()
                 ->newTable($tableName)
@@ -82,16 +79,17 @@ class InstallSchema implements InstallSchemaInterface
                     ],
                     'Updated At'
                 )
-                ->setComment('Smartosc Article ');
+                ->setComment('SmartOsc Article ');
                 $setup->getConnection()->createTable($table);
                 $setup->getConnection()->addIndex(
                     $setup->getTable('sm_article'),
                     $setup->getIdxName(
                         $setup->getTable('sm_article'),
-                        ['name','content','image','created_at','updated_at'],\Magento\Framework\DB\Adapter\AdapterInterface::INDEX_TYPE_FULLTEXT
+                        ['name','content','image'],\Magento\Framework\DB\Adapter\AdapterInterface::INDEX_TYPE_FULLTEXT
                     ),
-                    ['name','content','image','created_at','updated_at'],\Magento\Framework\DB\Adapter\AdapterInterface::INDEX_TYPE_FULLTEXT
+                    ['name','content','image'],\Magento\Framework\DB\Adapter\AdapterInterface::INDEX_TYPE_FULLTEXT
                 );
         }
+        $setup->endSetup();
     }
 }
