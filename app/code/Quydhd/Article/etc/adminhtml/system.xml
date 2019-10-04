@@ -16,9 +16,9 @@
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                     <comment></comment>
                 </field>
-                <field id="display_text" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
-                    <label>Display</label>
-                    <comment>Display in the frontend</comment>
+                <field id="limit_page" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
+                    <label>Limit per page</label>
+                    <comment></comment>
                 </field>
             </group>
         </section>

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <quydhd_configuration>
+            <configuration>
+                <enable>0</enable>
+                <limit_page>10</limit_page>
+            </configuration>
+        </quydhd_configuration>
+    </default>
+</config>

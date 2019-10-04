@@ -1,0 +1,69 @@
+<?php
+
+/** @var Detail $block */
+
+use Quydhd\Article\Block\Detail;
+
+?>
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 30px;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    th {
+        background-color: #4CAF50;
+        color: white;
+    }
+    tr:hover {
+        background-color:#f5f5f5;
+    }
+    .article-id {
+        width: 3%
+    }
+
+    .article-name {
+        width: 15%
+    }
+    .article-createdat {
+        width: 15%;
+    }
+    .article-updatedat{
+        width: 15%;
+    }
+    .article-action {
+        width: 5%;
+    }
+
+</style>
+
+<table>
+    <tr>
+        <th class="article-id">ID</th>
+        <th class="article-name">NAME</th>
+        <th>CONTENT</th>
+        <th class="article-createdat">CREATE AT</th>
+        <th class="article-updatedat">UPDATE AT</th>
+        <th class="article-action">ACTION</th>
+    </tr>
+    <?php
+        $article = $block->getArticleID();
+
+        echo '<tr>
+                    <td>' . $article['article_id'] . '</td>
+                    <td>' . $article['name'] . '</td>
+                    <td>' . $article['content'] . '</td>
+                    <td>' . $article['created_at'] .'</td>
+                    <td>' . $article['updated_at'] .'</td>
+                    <td><a href="display">Return</a></td>
+                  </tr>';
+    ?>
+</table>

@@ -12,6 +12,6 @@ class CreatePostObserver implements ObserverInterface
     {
         $account = $observer->getEvent()->getData('account_controller');
         $customer = $observer->getEvent()->getData('customer');
-        return $this;
+        echo var_dump($customer[0]);die;
     }
 }

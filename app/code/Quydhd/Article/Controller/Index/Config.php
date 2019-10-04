@@ -4,25 +4,29 @@ namespace Quydhd\Article\Controller\Index;
 
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
-use Magento\Framework\View\Result\PageFactory;
-use Quydhd\Article\Model\ResourceModel\Article\CollectionFactory;
+use Quydhd\Article\Helper\Data;
 
-class Index extends Action
+class Config extends Action
 {
-    protected $_pageFactory;
+
+    protected $_helperData;
 
     public function __construct(
         Context $context,
-        PageFactory $pageFactory
+        Data $helperData
 
     )
     {
-        $this->_pageFactory = $pageFactory;
+        $this->_helperData = $helperData;
         return parent::__construct($context);
     }
 
     public function execute()
     {
-        return $this->_pageFactory->create();
+
+        echo $this->_helperData->getGeneralConfig('enable');
+        echo $this->_helperData->getGeneralConfig('limit_page');
+        exit();
+
     }
 }

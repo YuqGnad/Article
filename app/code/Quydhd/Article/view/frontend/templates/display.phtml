@@ -1,0 +1,68 @@
+<?php
+
+/** @var Display $block */
+
+use Quydhd\Article\Block\Display;
+
+
+?>
+
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 30px;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    th {
+        background-color: #4CAF50;
+        color: white;
+    }
+    tr:hover {
+        background-color: #82FA58;
+    }
+    .article-id {
+        width: 3%
+    }
+
+    .article-name {
+        width: 15%
+    }
+    .article-detail {
+        width: 5%;
+    }
+
+</style>
+
+<table>
+    <tr>
+        <th class="article-id">ID</th>
+        <th class="article-name">NAME</th>
+        <th>CONTENT</th>
+        <th class="article-detail">DETAIL</th>
+    </tr>
+    <?php
+
+    $article = $block->getArticleCollection();
+
+    foreach ($article as $value) {
+        echo '<tr>
+                    <td>' . $value['article_id'] . '</td>
+                    <td>' . $value['name'] . '</td>
+                    <td>' . $value['content'] . '</td>
+                    <td><a href =/article/index/detail?ID='.$value['article_id'].'>Detail</a></td>
+                  </tr>';
+    }
+    ?>
+</table>
+
+<?php if ($block->getPagerHtml()): ?>
+    <div style="margin-top: 20px; display: inline; text-align: center" class="order-products-toolbar toolbar"><?php echo $block->getPagerHtml(); ?></div>
+<?php endif ?>
